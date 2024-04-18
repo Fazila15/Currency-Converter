@@ -12,7 +12,7 @@ const currency:any =
   let condition = true;
 
   while(condition)
-  {let usrAnswer = await inquirer.prompt(
+ { let usrAnswer = await inquirer.prompt(
     [
         {
             name: "from",
@@ -42,16 +42,16 @@ const currency:any =
   let convertedAmount = conversionAmount * toAmount;
   
   console.log(chalk.cyan.bold.italic(convertedAmount))
-
+  
 let ConvertAgain = await inquirer.prompt(
     {
-        name: "Again",
-        message: `${chalk.yellow.bold("Do you want to convert currency again? ")}`,
-        type: "confirm",
-        default: "true",
+        name: "action",
+        message: "Choose An Action",
+        type: "list",
+        choices: ["Convert Again", "Exit"],
     }
 );
-
-condition = ConvertAgain.Again
-
+ if(ConvertAgain.action === "Exit"){
+      condition = false
+ };
 };
